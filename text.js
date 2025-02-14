@@ -6,7 +6,7 @@ import {Text} from 'troika-three-text'
 let text = new Text()
 text.anchorX = 'center'
 text.anchorY = 'middle'
-text.font = 'mcfont.ttf'
+text.font = 'public/mcfont.ttf'
 text.text = "hello!"
 text.fontSize = 1.4
 text.color = 'white'
@@ -25,7 +25,7 @@ scene.add(text)
 let text1 = new Text()
 text1.anchorX = 'center'
 text1.anchorY = 'middle'
-text1.font = 'mcfont.ttf'
+text1.font = 'public/mcfont.ttf'
 text1.text = "i'm nxen ♪"
 text1.fontSize = 0.8
 text1.color = 'white'

@@ -7,7 +7,7 @@ import { renderGroup } from 'three/tsl';
 const loader = new OBJLoader()
 
 loader.load(
-	'models/aboutme.obj',
+	'public/aboutme.obj',
 
 	function (object) {
         object.traverse((child) => {
@@ -75,8 +75,10 @@ loader.load(
 
         window.addEventListener('mousedown', () => {
             const intersects = raycaster.intersectObject(object);
-            if (intersects.length > 0) switchScene(object)
-            scene.remove(object)
+            if (intersects.length > 0) {
+                switchScene(object)
+                scene.remove(object)
+            }
         })
 	},
 
