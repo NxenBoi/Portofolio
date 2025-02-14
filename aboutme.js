@@ -2,12 +2,11 @@ import { scene, camera, raycaster, mouse, renderer } from './main.js'
 import * as THREE from 'three'
 import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
 import gsap from 'gsap'
-import { renderGroup } from 'three/tsl';
 
 const loader = new OBJLoader()
 
 loader.load(
-	'src/aboutme.obj',
+	'/public/aboutme.obj',
 
 	function (object) {
         object.traverse((child) => {
