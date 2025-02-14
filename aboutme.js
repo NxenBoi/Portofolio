@@ -7,7 +7,7 @@ import { renderGroup } from 'three/tsl';
 const loader = new OBJLoader()
 
 loader.load(
-	'public/aboutme.obj',
+	'src/aboutme.obj',
 
 	function (object) {
         object.traverse((child) => {
