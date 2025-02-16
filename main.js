@@ -8,13 +8,15 @@ const parallaxIntensity = 1
 
 // Scene
 export const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x1c1c1c)
+
+// Camera
 export const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.position.z = 10;
 var cameraAnchorPos = new THREE.Vector3().copy(camera.position);
 
 // Renderer
 export const renderer = new THREE.WebGLRenderer({ antialias: true });
-renderer.setClearColor(0x1c1c1c);
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setAnimationLoop(update);
 document.body.appendChild(renderer.domElement);
@@ -27,7 +29,7 @@ export const raycaster = new THREE.Raycaster();
 const ambientLight = new THREE.AmbientLight(0xffffff);
 scene.add(ambientLight);
 
-const directionalLight = new THREE.DirectionalLight(0xffffff, 1.5);
+const directionalLight = new THREE.DirectionalLight(0xffffff, 1)
 directionalLight.position.set(camera.position.x, camera.position.y, camera.position.z).normalize();
 scene.add(directionalLight);
 

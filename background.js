@@ -1,13 +1,18 @@
-import { scene, camera, raycaster, mouse } from './main.js'
+import { scene } from './main.js'
 import * as THREE from 'three'
 import gsap from 'gsap'
 
-const bgcubecolors = [0x4a4a4a, 0x4a4a4a, 0x4a4a4a, 0x333333, 0x212121]
+const cubeScale = 0.5
+var baseColor = new THREE.Color(0x4a4a4a)
+var cubes = []
 
-for (let layer = 0; layer < 5; layer++) {
+for (let layer = 0; layer < 6; layer++) {
+    const darknessFactor = 0.9 / layer
+    const darkenedColor = baseColor.clone().multiplyScalar(darknessFactor);
+
     for (let i = 0; i < 50*layer; i++) {
         const geometry = new THREE.BoxGeometry(1, 1, 1);
-        const material = new THREE.MeshBasicMaterial({ color: bgcubecolors[layer]});
+        const material = new THREE.MeshBasicMaterial({color: darkenedColor});
         const cube = new THREE.Mesh(geometry, material);
     
         var range = (layer+1) * 20
@@ -20,21 +25,31 @@ for (let layer = 0; layer < 5; layer++) {
         cube.rotation.y = Math.random() * 2 - 1;
         cube.rotation.z = Math.random() * 2 - 1;
     
-        var scale = 0.5
-        cube.scale.x = scale;
-        cube.scale.y = scale;
-        cube.scale.z = scale;
+        cube.scale.x = cubeScale;
+        cube.scale.y = cubeScale;
+        cube.scale.z = cubeScale;
     
         gsap.to(cube.scale, {
-            x: scale-0.1,
-            y: scale-0.1,
-            z: scale-0.1,
+            x: cubeScale-0.1,
+            y: cubeScale-0.1,
+            z: cubeScale-0.1,
             duration: 1,
             yoyo: true,
             repeat: -1,
             ease: "sine.inOut"
         })
-
+        
+        cubes.push(cube);
         scene.add(cube);
     }
+}
+
+export function toggleBackground(toggled) {
+    cubes.forEach(cube => {
+        if (toggled) {
+            scene.add(cube)
+        } else {
+            scene.remove(cube)
+        }
+    });
 }
