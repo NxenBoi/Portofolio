@@ -11,6 +11,8 @@ const links = {
     "discord": "https://discord.gg/WUwTbXpH8G"
 }
 
+var clickable = true
+
 const loader = new OBJLoader()
 
 loader.load(
@@ -58,8 +60,8 @@ loader.load(
             raycaster.setFromCamera(mouse, camera);
         
             const intersects = raycaster.intersectObject(object);
-        
-            if (intersects.length > 0) {
+            
+            if (intersects.length > 0 && clickable) {
                 document.body.style.cursor = 'pointer';
                 gsap.to(object.scale, {
                     x: 1.1,
@@ -82,7 +84,8 @@ loader.load(
 
         window.addEventListener('mousedown', () => {
             const intersects = raycaster.intersectObject(object);
-            if (intersects.length > 0) {
+            if (intersects.length > 0 && clickable) {
+                clickable = false
                 scene.remove(object)
                 switchScene(object)
             }
