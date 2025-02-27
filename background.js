@@ -28,28 +28,53 @@ for (let layer = 0; layer < 6; layer++) {
         cube.scale.x = cubeScale;
         cube.scale.y = cubeScale;
         cube.scale.z = cubeScale;
-    
-        gsap.to(cube.scale, {
-            x: cubeScale-0.1,
-            y: cubeScale-0.1,
-            z: cubeScale-0.1,
-            duration: 1,
-            yoyo: true,
-            repeat: -1,
-            ease: "sine.inOut"
-        })
         
         cubes.push(cube);
         scene.add(cube);
     }
 }
 
-export function toggleBackground(toggled) {
+export function toggleCubes(toggled) {
     cubes.forEach(cube => {
-        if (toggled) {
-            scene.add(cube)
-        } else {
-            scene.remove(cube)
-        }
+        if (toggled) scene.add(cube); else scene.remove(cube);
+    });
+}
+
+export function changeCubesColor(color) {
+    cubes.forEach(cube => {
+        const layer = cube.position.z / -5
+        const darknessFactor = 0.9 / layer
+        const darkenedColor = new THREE.Color(color).clone().multiplyScalar(darknessFactor);
+        cube.material = new THREE.MeshBasicMaterial({color: darkenedColor})
+    });
+}
+
+export function changeCubeGeometry(geometry) {
+    cubes.forEach(cube => {
+        cube.geometry = geometry
+    });
+}
+
+export function changeCubeScale(scale) {
+    cubes.forEach(cube => {
+        gsap.to(cube.scale, {
+            x: scale,
+            y: scale,
+            z: scale,
+            duration: 0.5,
+            ease: "sine.out"
+        })
+    });
+}
+
+export function scatterCubes(factor) {
+    cubes.forEach(cube => {
+        gsap.to(cube.position, {
+            x: cube.position.x + (Math.random() - 0.5) * factor,
+            y: cube.position.y + (Math.random() - 0.5) * factor,
+            z: cube.position.z + (Math.random() - 0.5) * factor,
+            duration: 0.5,
+            ease: "sine.out",
+        })
     });
 }

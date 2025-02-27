@@ -1,5 +1,5 @@
 import { scene, camera, raycaster, mouse } from './main.js'
-import { toggleBackground } from './background.js'
+import { toggleCubes } from './background.js'
 import { hello, imnxen, write } from './text.js';
 import * as THREE from 'three'
 import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
@@ -13,9 +13,7 @@ const links = {
 
 var clickable = true
 
-const loader = new OBJLoader()
-
-loader.load(
+new OBJLoader().load(
 	'/public/aboutme.obj',
 
 	function (object) {
@@ -104,11 +102,11 @@ function makeCubes() {
     const divisions = 4;
 
     const cubeSize = size / divisions;
-    const material = new THREE.MeshBasicMaterial({color: 'hotpink'});
-
+    
     for (let x = 0; x < divisions; x++) {
         for (let y = 0; y < divisions; y++) {
             for (let z = 0; z < divisions; z++) {
+                const material = new THREE.MeshBasicMaterial({color: Math.random() * 0xffffff});
                 const geometry = new THREE.BoxGeometry(cubeSize, cubeSize, cubeSize);
                 const cube = new THREE.Mesh(geometry, material);
 
@@ -181,49 +179,22 @@ new MTLLoader().load('public/pc.mtl', (materials) => {
     const objLoader = new OBJLoader();
     objLoader.setMaterials(materials);
     objLoader.load('public/pc.obj', (object) => {
-        object.position.set(7, 0, 0);
+        object.position.set(8.5, -2.5, 0);
         object.rotation.set(0, 2.5 ,0)
         object.scale.set(0, 0, 0);
         pc = object
     });
 });
 
-function switchScene() {
-    makeCubes()
-    shatter()
-
-    const targetColor = new THREE.Color(0xc4588e);
-    gsap.to(scene.background, {
-        r: targetColor.r,
-        g: targetColor.g,
-        b: targetColor.b,
-        duration: 2,
-        ease: "power2.out",
-    });
-
-    scene.remove(hello)
-    scene.remove(imnxen)
-
-    toggleBackground(false)
-
-    const aboutme = write('< About Me >', 0, 15, 1.5, 1.4)
-    aboutme.outlineColor = 0x8a4565
-    scene.add(aboutme)
-
-    gsap.to(aboutme.position, {
-        y: 4.5,
-        duration: 0.5,
-        ease: "power2.out",
-    })
-
+function animateParagraph1() {
     setTimeout(() => {
-        const p1 = write("i'm an experienced scripter\non Roblox, with a big passion \nfor game development!", -13, 0.5, 1.5, 0.8)
+        const p1 = write("i'm an experienced scripter\non Roblox, with a big passion \nfor game development!", -13, -1.5, 1.5, 0.8)
         p1.textAlign = 'left'
         p1.outlineColor = 0x8a4565
         scene.add(p1)
 
         gsap.to(p1.position, {
-            x: -6,
+            x: -5,
             duration: 0.5,
             ease: "power2.out",
         })
@@ -241,7 +212,7 @@ function switchScene() {
     setTimeout(() => {
         var i = 0
         for (const [acc, link] of Object.entries(links)) {
-            const linkText = write(acc, 5.7, 2.35-i*.5, 1.5, 0)
+            const linkText = write(acc, 7.2, -.15-i*.5, 1.5, 0)
             linkText.textAlign = 'center'
             linkText.color = 0x00ff00
             linkText.outlineColor = 0x006100
@@ -259,4 +230,165 @@ function switchScene() {
             i++
         }
     }, 400);
+}
+
+function animateParagraph2() {
+    const cubePositions = [-11, -9, -7, -5];
+    const cubeHeight = 4;
+    const initialY = -13.5;
+    const initialZ = 1;
+    const delayIncrement = 0.1;
+
+    cubePositions.forEach((x, index) => {
+        const material = new THREE.MeshBasicMaterial({ color: 0xff0000, side: THREE.FrontSide, });
+        const geometry = new THREE.BoxGeometry(0.75, cubeHeight, 0.75);
+        const cube = new THREE.Mesh(geometry, material);
+        cube.position.set(x, initialY, initialZ);
+        cube.rotation.set(0, 1, 0);
+        cube.scale.set(0, 0, 0);
+        scene.add(cube);
+
+        const backgroundMaterial = new THREE.MeshBasicMaterial({
+            side: THREE.DoubleSide,
+            color: 0x1f1f1f,
+            transparent: true,
+            opacity: 1
+        });
+        const backgroundCube = new THREE.Mesh(geometry, backgroundMaterial);
+        backgroundCube.position.set(x, initialY, initialZ);
+        backgroundCube.rotation.set(0, 1, 0);
+        backgroundCube.scale.set(0.99, 0, 0.99);
+        scene.add(backgroundCube);
+
+        gsap.to(backgroundCube.scale, {
+            y: 0.99,
+            duration: 0.75,
+            ease: "back.out(0.5)",
+            delay: index * delayIncrement
+        });
+
+        gsap.to(backgroundCube.position, {
+            y: backgroundCube.position.y + 2,
+            duration: 0.75,
+            ease: "back.out(0.5)",
+            delay: index * delayIncrement
+        });
+
+        gsap.to(cube.material.color, {
+            r: 0,
+            g: 1,
+            b: 0,
+            duration: 2,
+            ease: "expo.Out",
+            delay: index * delayIncrement
+        });
+
+        gsap.to(cube.scale, {
+            y: 1,
+            duration: 2,
+            ease: "expo.Out",
+            delay: index * delayIncrement,
+
+            onStart: () => {
+                cube.scale.x = 1
+                cube.scale.z = 1
+            },
+        });
+
+        gsap.to(cube.position, {
+            y: cube.position.y + 2,
+            duration: 2,
+            ease: "expo.Out",
+            delay: index * delayIncrement
+        });
+    });
+
+    const tops = ["fast", "safe", "clean", "modular"];
+    const bottoms = ["slow", "unsafe", "mess", "fixed"];
+
+    cubePositions.forEach((x, index) => {
+        const top = write(tops[index], x, initialY+4.5, 1, 0.4)
+        top.color = 'limegreen'
+        top.outlineColor = 'darkgreen'
+        scene.add(top)
+
+        const bottom = write(bottoms[index], x, initialY-0.5, 1, 0.4)
+        bottom.color = 'red'
+        bottom.outlineColor = 'darkred'
+        scene.add(bottom)
+    })
+
+    const p1 = write("my code is organized, optimized\nand secure. i always make sure\nthese requirements are met.", 13, -12, 1.5, 0.8)
+    p1.textAlign = 'right'
+    p1.outlineColor = 0x8a4565
+    scene.add(p1)
+
+    gsap.to(p1.position, {
+        x: 4.25,
+        duration: 1,
+        ease: "power2.out",
+    })
+}
+
+function switchScene() {
+    makeCubes()
+    shatter()
+
+    const targetColor = new THREE.Color(0xc4588e);
+    gsap.to(scene.background, {
+        r: targetColor.r,
+        g: targetColor.g,
+        b: targetColor.b,
+        duration: 2,
+        ease: "power2.out",
+    });
+
+    scene.remove(hello)
+    scene.remove(imnxen)
+
+    toggleCubes(false)
+
+    const aboutme = write('< About Me >', 0, 15, 1.5, 1.4)
+    aboutme.outlineColor = 0x8a4565
+    scene.add(aboutme)
+
+    gsap.to(aboutme.position, {
+        y: 4.5,
+        duration: 0.5,
+        ease: "power2.out",
+    })
+
+    const arrow = write('▶', 0, -6, 1.5, 1.4)
+    arrow.color = null
+    arrow.outlineOpacity = 0
+    arrow.material = new THREE.MeshBasicMaterial({color: 'black', transparent: true, opacity: 0.25})
+    arrow.rotation.z = -Math.PI/2
+    scene.add(arrow)
+
+    animateParagraph1()
+    
+    var interval = setInterval(() => {
+        if (camera.position.y < -4) {
+            clearInterval(interval)
+            gsap.to(arrow.material, {
+                opacity: 0,
+                duration: 0.5,
+                ease: "power2.out",
+            })
+            animateParagraph2()
+        }
+    }, 100);
+
+    setTimeout(() => {
+        const p1 = write("my delivery and responses are\nvery quick, and i'm flexible with\nwhen or how much i can work.", -13, -22.5, 1.5, 0.8)
+        p1.textAlign = 'left'
+        p1.outlineColor = 0x8a4565
+        scene.add(p1)
+
+        gsap.to(p1.position, {
+            x: -5,
+            duration: 0.5,
+            ease: "power2.out",
+        })
+    }, 600);
 }

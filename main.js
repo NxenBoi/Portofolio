@@ -3,7 +3,7 @@ import * as THREE from 'three'
 import gsap from 'gsap'
 
 // Variables
-const scrollSpeed = 0.01
+const scrollSpeed = 0.02
 const parallaxIntensity = 1
 
 // Scene
@@ -51,6 +51,10 @@ window.addEventListener('wheel', (event) => {
         duration: 0.2,
         ease: "sine.Out"
     })
+
+    if (cameraAnchorPos.y < -10) {
+        animateParagraph2();
+    }
 });
 
 // Update
