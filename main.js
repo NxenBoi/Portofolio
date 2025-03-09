@@ -51,10 +51,6 @@ window.addEventListener('wheel', (event) => {
         duration: 0.2,
         ease: "sine.Out"
     })
-
-    if (cameraAnchorPos.y < -10) {
-        animateParagraph2();
-    }
 });
 
 // Update

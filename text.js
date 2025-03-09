@@ -28,3 +28,6 @@ scene.add(hello)
 
 export const imnxen = write("i'm nxen ♪", 0.7, 3.75, 1.5, 0.8)
 scene.add(imnxen)
+
+const x = write('ill give u 5% off', 0, 250, 0, 0.75)
+scene.add(x)
