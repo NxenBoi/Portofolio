@@ -7,7 +7,9 @@ import gsap from 'gsap'
 
 const links = {
     "roblox": "https://www.roblox.com/users/605812397/profile",
-    "discord": "https://discord.gg/WUwTbXpH8G"
+    "discord": "https://discord.gg/WUwTbXpH8G",
+    "youtube": "https://www.youtube.com/@NxenBoi",
+    "twitter": "https://x.com/nxen22"
 }
 
 var clickable = true
@@ -51,11 +53,6 @@ new OBJLoader().load(
         })
 
         window.addEventListener('mousemove', (event) => {
-            mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-            mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-        
-            raycaster.setFromCamera(mouse, camera);
-        
             const intersects = raycaster.intersectObject(object);
             
             if (intersects.length > 0 && clickable) {
@@ -89,8 +86,32 @@ new OBJLoader().load(
         })
 	},
 
-	function (xhr) {console.log( (xhr.loaded / xhr.total * 100) + '% loaded')},
-	function (error) {console.log('An error happened')}
+	function (error) {console.log('An error happened / ', error)}
+);
+
+var clock
+new OBJLoader().load(
+	'/public/clock.obj',
+
+	function (object) {
+        object.traverse((child) => {
+            if (child.name == 'Interior') {
+                child.material = new THREE.MeshPhongMaterial({color: 'black'})
+            } else {
+                child.material = new THREE.MeshPhongMaterial({color: 'hotpink'})
+            }
+        })
+
+        object.scale.set(0, 0, 1)
+
+        object.position.x = 9
+        object.position.y = -23
+        object.position.z = 0
+
+        clock = object
+	},
+
+	function (error) {console.log('An error happened / ', error)}
 );
 
 const group = new THREE.Group();
@@ -203,7 +224,7 @@ function animateParagraph1() {
     setTimeout(() => {
         var i = 0
         for (const [acc, link] of Object.entries(links)) {
-            const linkText = write(acc, 7.75, 0.25-i*.65, 1, 0)
+            const linkText = write(`@${acc}`, 7.75, 0.25-i*.65, 1, 0)
             linkText.textAlign = 'center'
             linkText.color = 'hotpink'
             linkText.outlineColor = 0x733251
@@ -218,7 +239,32 @@ function animateParagraph1() {
                 ease: "expo.out",
             });
 
-            
+            window.addEventListener('mousemove', () => {
+                const intersects = raycaster.intersectObject(linkText);
+
+                if (intersects.length > 0) {
+                    document.body.style.cursor = 'pointer';
+                    gsap.to(linkText, {
+                        fontSize: 0.5,
+                        duration: 0.3,
+                        ease: "power2.out"
+                    })
+                } else {
+                    gsap.to(linkText, {
+                        fontSize: 0.45,
+                        duration: 0.3,
+                        ease: "power2.out"
+                    })
+                }
+            })
+
+            window.addEventListener('mousedown', () => {
+                const intersects = raycaster.intersectObject(linkText);
+
+                if (intersects.length > 0) {
+                    window.open(link, '_blank');
+                }
+            })
 
             i++
         }
@@ -324,6 +370,71 @@ function animateParagraph2() {
     })
 }
 
+function animateParagraph3() {
+    const p1 = write("my delivery and responses are\nvery quick, and i'm flexible with\nwhen or how much i can work.", -13, -22.5, 1.5, 0.8)
+    p1.textAlign = 'left'
+    p1.outlineColor = 'dimgray'
+    scene.add(p1)
+
+    gsap.to(p1.position, {
+        x: -5,
+        duration: 1,
+        ease: "power2.out",
+    })
+
+    scene.add(clock)
+
+    gsap.to(clock.scale, {
+        x: 25,
+        y: 25,
+        z: 1,
+        duration: 1,
+        ease: "power4.out",
+    })
+
+    clock.traverse((child) => {
+        if (child.name === 'ShortHand') {
+            child.geometry.computeBoundingBox();
+            const boundingBox = child.geometry.boundingBox;
+
+            const pivot = new THREE.Vector3(
+                (boundingBox.max.x + boundingBox.min.x) / 2 - 0.03,
+                (boundingBox.max.y + boundingBox.min.y) / 2 - 0.0175,
+                (boundingBox.max.z + boundingBox.min.z) / 2
+            );
+
+            child.geometry.translate(-pivot.x, -pivot.y, -pivot.z);
+            child.position.copy(pivot);
+
+            gsap.to(child.rotation, {
+                z: Math.PI * 20,
+                duration: 10,
+                ease: "sine.inOut",
+                repeat: -1
+            });
+        } else if (child.name === 'LongHand') {
+            child.geometry.computeBoundingBox();
+            const boundingBox = child.geometry.boundingBox;
+
+            const pivot = new THREE.Vector3(
+                (boundingBox.max.x + boundingBox.min.x) / 2 - 0.015,
+                (boundingBox.max.y + boundingBox.min.y) / 2 - 0.0435,
+                (boundingBox.max.z + boundingBox.min.z) / 2
+            );
+
+            child.geometry.translate(-pivot.x, -pivot.y, -pivot.z);
+            child.position.copy(pivot);
+
+            gsap.to(child.rotation, {
+                z: -Math.PI * 20,
+                duration: 10,
+                ease: "sine.inOut",
+                repeat: -1
+            });
+        }
+    });
+}
+
 function switchScene() {
     makeCubes()
     shatter()
@@ -397,16 +508,15 @@ function switchScene() {
         }
     }, 100);
 
-    setTimeout(() => {
-        const p1 = write("my delivery and responses are\nvery quick, and i'm flexible with\nwhen or how much i can work.", -13, -22.5, 1.5, 0.8)
-        p1.textAlign = 'left'
-        p1.outlineColor = 'dimgray'
-        scene.add(p1)
-
-        gsap.to(p1.position, {
-            x: -5,
-            duration: 0.5,
-            ease: "power2.out",
-        })
-    }, 600);
+    var interval2 = setInterval(() => {
+        if (camera.position.y < -16) {
+            clearInterval(interval2)
+            gsap.to(arrow.material, {
+                opacity: 0,
+                duration: 0.5,
+                ease: "power2.out",
+            })
+            animateParagraph3()
+        }
+    }, 100);
 }

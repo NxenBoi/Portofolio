@@ -25,6 +25,18 @@ document.body.appendChild(renderer.domElement);
 export const mouse = new THREE.Vector2();
 export const raycaster = new THREE.Raycaster();
 
+window.addEventListener('mousemove', (event) => {
+    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+    raycaster.setFromCamera(mouse, camera);
+
+    const intersects = raycaster.intersectObjects(scene.children);
+    if (intersects.length == 0) {
+        document.body.style.cursor = 'default';
+    }
+})
+
 // Lighting
 const ambientLight = new THREE.AmbientLight(0xffffff);
 scene.add(ambientLight);
