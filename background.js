@@ -36,7 +36,21 @@ for (let layer = 0; layer < 6; layer++) {
 
 export function toggleCubes(toggled) {
     cubes.forEach(cube => {
-        if (toggled) scene.add(cube); else scene.remove(cube);
+        if (toggled) {
+            scene.add(cube);
+        }
+        else {
+            gsap.to(cube.scale, {
+                x: 0,
+                y: 0,
+                z: 0,
+                duration: 0.5,
+                ease: "sine.out",
+                onComplete: () => {
+                    scene.remove(cube);
+                }
+            });
+        }
     });
 }
 

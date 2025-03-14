@@ -1,10 +1,12 @@
 // Libraries
 import * as THREE from 'three'
 import gsap from 'gsap'
+import { CSS3DRenderer } from 'three/examples/jsm/Addons.js';
 
 // Variables
 const scrollSpeed = 0.02
 const parallaxIntensity = 1
+var parallax = true
 
 // Scene
 export const scene = new THREE.Scene();
@@ -52,11 +54,6 @@ window.addEventListener('resize', () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
 });
 
-window.addEventListener('mousemove', (event) => {
-    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-    mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
-});
-
 window.addEventListener('wheel', (event) => {
     gsap.to(cameraAnchorPos, {
         y: cameraAnchorPos.y - event.deltaY * scrollSpeed,
@@ -65,13 +62,30 @@ window.addEventListener('wheel', (event) => {
     })
 });
 
-// Update
+// CSS Renderer
+const cssRenderer = new CSS3DRenderer();
+cssRenderer.setSize(window.innerWidth, window.innerHeight);
+cssRenderer.domElement.style.position = 'absolute';
+cssRenderer.domElement.style.top = '0';
+document.body.appendChild(cssRenderer.domElement);
+
+// Functions
+export function toggleParallax(toggled) {
+    parallax = toggled
+}
+
 function update() {
     const offsetX = mouse.x * parallaxIntensity;
     const offsetY = mouse.y * parallaxIntensity;
     
-    camera.position.x = cameraAnchorPos.x + offsetX;
-    camera.position.y = cameraAnchorPos.y + offsetY;
+    if (parallax) {
+        camera.position.x = cameraAnchorPos.x + offsetX;
+        camera.position.y = cameraAnchorPos.y + offsetY;
+    } else {
+        camera.position.x = cameraAnchorPos.x;
+        camera.position.y = cameraAnchorPos.y;
+    }
 
     renderer.render(scene, camera)
+    cssRenderer.render(scene, camera)
 }
