@@ -10,7 +10,7 @@ import { CSS3DObject } from 'three/examples/jsm/Addons.js';
 
 var clip = 0
 const clips = [
-    "https://www.youtube.com/embed/OAo8fjT_Hms",
+    "https://www.youtube.com/embed/DzqxjECpr-k",
     "https://www.youtube.com/embed/vtU8Vyu_pnM",
     "https://www.youtube.com/embed/KY_6ZBvADMg",
     "https://www.youtube.com/embed/ClWm6_WkIfQ",
