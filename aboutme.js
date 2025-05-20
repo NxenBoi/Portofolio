@@ -6,6 +6,7 @@ import { hello, imnxen, write } from './text.js';
 import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
 import { shatter } from './shattereffect.js'
 import { exampleclipsbutton } from './exampleclips.js'
+import { CSS3DObject, CSS3DRenderer } from 'three/examples/jsm/Addons.js';
 
 const links = {
     "roblox": "https://www.roblox.com/users/605812397/profile",
@@ -270,7 +271,7 @@ function animateParagraph2() {
     });
 
     const tops = ["fast", "safe", "clean", "modular"];
-    const bottoms = ["slow", "unsafe", "messy", "fixed"];
+    const bottoms = ["slow", "unsafe", "messy", "rigid"];
 
     cubePositions.forEach((x, index) => {
         const top = write(tops[index], x, initialY+4.5, 1, 0.4)
@@ -411,4 +412,47 @@ function switchScene() {
             animateParagraph3()
         }
     }, 100);
+
+    var backButton = document.createElement('button');
+    backButton.style.background = 'rgba(255, 255, 255, 0.05)';
+    backButton.style.borderRadius = '4px';
+    backButton.style.backdropFilter = 'blur(5px)';
+    backButton.style.color = 'white';
+    backButton.style.font = 'public/mcfont.ttf';
+    backButton.style.border = 'none';
+    backButton.style.padding = '10px 15px';
+    backButton.style.paddingTop = '15px';
+    backButton.style.transition = 'all 0.3s ease';
+    backButton.style.fontSize = '10px';
+    backButton.style.lineHeight = '1';
+    backButton.style.transition = 'all 0.3s ease';
+    backButton.innerHTML = '< Back >';
+
+    backButton.style.fontFamily = 'Minecraft';
+    var fontFace = new FontFace('Minecraft', 'url(/public/mcfont.ttf)');
+    fontFace.load().then((loadedFont) => {
+        document.fonts.add(loadedFont);
+        backButton.style.fontFamily = 'Minecraft';
+    });
+
+    var object3d = new CSS3DObject(backButton);
+    var x = 0.04;
+    object3d.scale.set(x, x, x);
+    object3d.position.set(0, -28, 0);
+    scene.add(object3d);
+
+    // Add hover effect
+    backButton.addEventListener('mouseenter', () => {
+        backButton.style.background = 'rgba(208, 65, 203, 0.15)';
+        backButton.style.boxShadow = '0 4px 15px rgba(192, 72, 162, 0.2)';
+    });
+
+    backButton.addEventListener('mouseleave', () => {
+        backButton.style.background = 'rgba(255, 255, 255, 0.05)';
+        backButton.style.boxShadow = 'none';
+    });
+
+    backButton.addEventListener('click', () => {
+        location.reload();
+    });
 }

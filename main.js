@@ -1,7 +1,8 @@
 // Libraries
 import * as THREE from 'three'
 import gsap from 'gsap'
-import { CSS3DRenderer } from 'three/examples/jsm/Addons.js';
+import { CSS3DObject, CSS3DRenderer } from 'three/examples/jsm/Addons.js';
+import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
 
 // Variables
 const scrollSpeed = 0.02
