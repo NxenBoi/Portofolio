@@ -122,7 +122,7 @@ new OBJLoader().load(
 
 function animateParagraph1() {
     setTimeout(() => {
-        const p1 = write("i'm an experienced scripter\non Roblox, with a big passion \nfor game development!", -13, -1.5, 1.5, 0.8)
+        const p1 = write("I'm an experienced scripter\non Roblox, with a big passion \nfor game development!", -13, -1.5, 1.5, 0.8)
         p1.textAlign = 'left'
         p1.outlineColor = 'dimgray'
         scene.add(p1)
@@ -285,7 +285,7 @@ function animateParagraph2() {
         scene.add(bottom)
     })
 
-    const p1 = write("my code is organized, optimized\nand secure. i always make sure\nthese requirements are met.", 13, -12, 1.5, 0.8)
+    const p1 = write("My code is organized, optimized\nand secure. I easily integrate in\n teams, being able to use any tool.", 13, -12, 1.5, 0.8)
     p1.textAlign = 'right'
     p1.outlineColor = 'dimgray'
     scene.add(p1)
@@ -298,7 +298,7 @@ function animateParagraph2() {
 }
 
 function animateParagraph3() {
-    const p1 = write("my delivery and responses are\nvery quick, and i'm flexible with\nwhen or how much i can work.", -13, -22.5, 1.5, 0.8)
+    const p1 = write("My delivery and responses are\nvery quick, and I'm flexible with\nwhen or how much I can work.", -13, -22.5, 1.5, 0.8)
     p1.textAlign = 'left'
     p1.outlineColor = 'dimgray'
     scene.add(p1)
@@ -418,7 +418,6 @@ function switchScene() {
     backButton.style.borderRadius = '4px';
     backButton.style.backdropFilter = 'blur(5px)';
     backButton.style.color = 'white';
-    backButton.style.font = 'public/mcfont.ttf';
     backButton.style.border = 'none';
     backButton.style.padding = '10px 15px';
     backButton.style.paddingTop = '15px';

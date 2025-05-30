@@ -197,14 +197,59 @@ function makeScreen() {
     })
 }
 
+function renderGrid() {
+    clips.forEach((link, i) => {
+        var videoFrame = document.createElement('button');
+        videoFrame.style.background = 'rgba(34, 34, 34, 0.1)';
+        videoFrame.style.borderRadius = '4px';
+        videoFrame.style.backdropFilter = 'blur(5px)';
+        videoFrame.style.color = 'white';
+        videoFrame.style.border = 'none';
+        videoFrame.style.padding = '10px 15px';
+        videoFrame.style.paddingTop = '15px';
+        videoFrame.style.fontSize = '10px';
+        videoFrame.style.lineHeight = '1';
+        videoFrame.innerHTML = ''; 
 
+        // Create iframe for YouTube embed
+        var iframe = document.createElement('iframe');
+        iframe.src = link;
+        iframe.width = '800';
+        iframe.height = '450';
+        iframe.style.border = 'none';
+        iframe.allow = 'autoplay; encrypted-media';
+        iframe.allowFullscreen = true;
+        iframe.style.pointerEvents = 'none';
+
+        videoFrame.appendChild(iframe);
+
+        var object3d = new CSS3DObject(videoFrame);
+        var x = 0.012;
+        object3d.scale.set(x, x, x);
+
+        // Grid positioning: 3 per row
+        const col = i % 3;
+        const row = Math.floor(i / 3);
+        const spacingX = 10; // horizontal spacing
+        const spacingY = 6; // vertical spacing
+
+        object3d.position.set(
+            (col - 1) * spacingX, // center grid horizontally
+            -(row * spacingY),    // stack rows downward
+            0
+        );
+
+        scene.add(object3d);
+    });
+}
 
 function switchScene() {
     shatter(new THREE.Vector3(4, 0, 2), 'limegreen')
     scatterCubes(2)
     toggleParallax(false)
 
-    makeScreen()
+    //makeScreen()
+    renderGrid()
 
     scene.remove(hello)
     scene.remove(imnxen)
@@ -224,7 +269,6 @@ function switchScene() {
     backButton.style.borderRadius = '4px';
     backButton.style.backdropFilter = 'blur(5px)';
     backButton.style.color = 'white';
-    backButton.style.font = 'public/mcfont.ttf';
     backButton.style.border = 'none';
     backButton.style.padding = '10px 15px';
     backButton.style.paddingTop = '15px';
@@ -243,7 +287,7 @@ function switchScene() {
     var object3d = new CSS3DObject(backButton);
     var x = 0.04;
     object3d.scale.set(x, x, x);
-    object3d.position.set(0, -6.5, 0);
+    object3d.position.set(0, -18, 0);
     scene.add(object3d);
 
     // Add hover effect
