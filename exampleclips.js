@@ -219,7 +219,6 @@ function renderGrid() {
         iframe.style.border = 'none';
         iframe.allow = 'autoplay; encrypted-media';
         iframe.allowFullscreen = true;
-        iframe.style.pointerEvents = 'none';
 
         videoFrame.appendChild(iframe);
 
