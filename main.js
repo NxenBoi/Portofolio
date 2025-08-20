@@ -20,8 +20,8 @@ const glow = utils.$(".glow")
 const experience = utils.$(".experience")
 
 animate(glow, {
-  filter: ['blur(20px)', 'blur(0px)', 'blur(20px)'],
-  opacity: [0, 1, 0],
+  filter: ['blur(20px)', 'blur(0px)', 'blur(0px)',  'blur(20px)'],
+  opacity: [0, 1, 1, 0],
   easing: 'linear',
   autoplay: onScroll({
     target: glow,
@@ -33,9 +33,9 @@ animate(glow, {
 });
 
 animate(experience, {
-  filter: ['blur(20px)', 'blur(0px)', 'blur(20px)'],
-  scale: [3, 1, 0],
-  opacity: [0, 1, 0],
+  filter: ['blur(20px)', 'blur(0px)', 'blur(0px)',  'blur(20px)'],
+  scale: [3, 1, 1, 0],
+  opacity: [0, 1, 1, 0],
   easing: 'linear',
   autoplay: onScroll({
     target: experience,
