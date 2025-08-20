@@ -1,0 +1,72 @@
+html {
+  scrollbar-width: none;
+}
+
+body {
+  -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+body::-webkit-scrollbar-button {
+  display: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+section {
+  height: 100vh;
+  width: 100vw;
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 3vw;
+  background-color: rgba(255, 255, 255, 0);
+
+  text-align: center;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  z-index: 2;
+}
+
+.glow {
+  position: absolute;
+  width: 15vw;
+  height: 15vw;
+  font-size: 0.5rem;
+  margin: 1em;
+  border: double 4px transparent;
+  border-radius: 50%;
+  background-image: linear-gradient(black), linear-gradient(#ffff, #fff1);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  opacity: 1;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -4em;
+    z-index: 1;
+    mask-image: linear-gradient(#0000 0%, #000f 50%);
+    backdrop-filter: blur(8px);
+    pointer-events: none;
+  }
+}
