@@ -1,5 +1,6 @@
 html {
   scrollbar-width: none;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -79,4 +80,28 @@ h1 {
     backdrop-filter: blur(8px);
     pointer-events: none;
   }
+}
+
+header {
+  margin: 0;
+  padding: 0;
+  height: 0;
+  position: sticky;
+  top: 10px;
+  z-index: 100;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  text-align: center;
+  font-size: 0.75vw;
+  background-color: rgba(0, 0, 0, 0);
+  color: rgba(255, 255, 255, 0.192);
+}
+
+.logo {
+  z-index: 1;
+  position: absolute;
+  opacity: 0.4;
+  width: 6vw;
+  filter: blur(2px);
 }
