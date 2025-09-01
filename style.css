@@ -30,6 +30,12 @@ section {
   background-color: black;
 }
 
+.first,
+.second,
+.third {
+  display: none;
+}
+
 .divider {
   background-color: black;
   padding: 0;
@@ -56,6 +62,27 @@ h1 {
   user-select: none;
 
   z-index: 2;
+}
+
+p {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-size: 0.75vw;
+  background-color: rgba(255, 255, 255, 0);
+
+  text-align: center;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  position: absolute;
+
+  opacity: 0.5;
+
+  margin-top: 30vh;
 }
 
 .glow {
@@ -101,7 +128,51 @@ header {
 .logo {
   z-index: 1;
   position: absolute;
-  opacity: 0.4;
+  opacity: 0;
   width: 6vw;
   filter: blur(2px);
+}
+
+.zero {
+  background: #000000;
+  color: rgb(255, 255, 255);
+  font-family: monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  flex-direction: column;
+}
+
+#Terminal {
+  white-space: pre;
+  line-height: 1.5;
+}
+#Input {
+  border: none;
+  background: none;
+  color: rgb(255, 255, 255);
+  outline: none;
+  font-family: monospace;
+  text-align: center;
+  width: 300px;
+}
+#Cursor {
+  display: inline-block;
+  width: 10px;
+  background: rgb(255, 255, 255);
+  animation: Blink 0.7s infinite;
+  vertical-align: bottom;
+}
+@keyframes Blink {
+  0%,
+  50%,
+  100% {
+    opacity: 1;
+  }
+  25%,
+  75% {
+    opacity: 0;
+  }
 }
