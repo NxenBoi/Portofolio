@@ -5,33 +5,19 @@ const first = document.querySelector(".first");
 const second = document.querySelector(".second");
 const third = document.querySelector(".third");
 
-const text = utils.$(".nxen");
 const logo = utils.$(".logo");
 const learnmore = utils.$(".learnmore");
 
 const syncTime = true;
 
-animate(text, {
-  filter: ["blur(0px)", "blur(20px)"],
-  scale: [1, 1.5],
-  opacity: [1, 0],
-  easing: "linear",
-  autoplay: onScroll({
-    target: text,
-    enter: "50vh-=3vw",
-    leave: "50vh-=9vw",
-    sync: syncTime,
-    debug: false,
-  }),
-});
-
 animate(logo, {
   scale: [1, 1.5],
-  opacity: [0.4, 0],
+  opacity: [1, 0],
+  filter: ["blur(0px)", "blur(8px)"],
   easing: "linear",
   autoplay: onScroll({
-    target: text,
-    enter: "50vh-=3vw",
+    target: logo,
+    enter: "50vh-=4vw",
     leave: "50vh-=9vw",
     sync: syncTime,
     debug: false,
@@ -80,7 +66,7 @@ animate(experience, {
 
 // Terminal
 
-const time = 50;
+const time = 0.5;
 const Terminal = document.getElementById("Terminal");
 const Input = document.getElementById("Input");
 let UserName = "";

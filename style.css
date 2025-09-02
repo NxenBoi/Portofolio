@@ -129,8 +129,7 @@ header {
   z-index: 1;
   position: absolute;
   opacity: 0;
-  width: 6vw;
-  filter: blur(2px);
+  width: 12vw;
 }
 
 .zero {
