@@ -167,6 +167,7 @@ header {
   animation: Blink 0.7s infinite;
   vertical-align: bottom;
 }
+
 @keyframes Blink {
   0%,
   50%,
@@ -188,14 +189,13 @@ header {
 .wrapper {
   width: 100%;
   position: relative;
-  height: 12vw;
 }
 
 .wrapper1 {
-  bottom: 7vw;
+  bottom: 18vh;
 }
 .wrapper2 {
-  top: 7vw;
+  top: 18vh;
 }
 
 @keyframes scrollLeft {
@@ -212,13 +212,6 @@ header {
 
 .itemRight,
 .itemLeft {
-  width: 20vw;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  border-radius: 6px;
-  filter: blur(4px);
   position: absolute;
   animation-duration: 30s;
   animation-timing-function: linear;
@@ -226,16 +219,16 @@ header {
 }
 
 .itemLeft {
-  left: max(calc(19vw * 8), 100%);
+  left: max(calc(15vw * 8), 100%);
   animation-name: scrollLeft;
-  background-image: url("sas.png");
 }
 
 .itemRight {
-  right: max(calc(19vw * 8), calc(100% + 19vw));
+  right: max(calc(15vw * 8), calc(100% + 15vw));
   animation-name: scrollRight;
 }
 
-.visits {
-  text-shadow: 5px 10px 8px #000000;
+.embed-wrapper {
+  width: 16vw;
+  height: 1px;
 }

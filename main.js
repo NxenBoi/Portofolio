@@ -78,10 +78,23 @@ animate(experience, {
   }),
 });
 
+const sas = document.querySelector(".sas");
+const mdg = document.querySelector(".mdg");
+
+for (let i = 1; i <= 16; i++) {
+  const game = document.querySelector(`.item${i}`);
+  if (!game) continue;
+
+  if (i % 2 === 0) {
+    game.appendChild(sas.content.cloneNode(true));
+  } else {
+    game.appendChild(mdg.content.cloneNode(true));
+  }
+}
 const wrapper = utils.$(".wrapper");
 
 animate(wrapper, {
-  opacity: [0, 0.35],
+  opacity: [0, 1],
   easing: "linear",
   autoplay: onScroll({
     target: wrapper,
@@ -94,7 +107,7 @@ animate(wrapper, {
 
 // Terminal
 
-const time = 50;
+const time = 0.5;
 const Terminal = document.getElementById("Terminal");
 const Input = document.getElementById("Input");
 let UserName = "";

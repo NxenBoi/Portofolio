@@ -1,79 +1,63 @@
 .item1 {
   animation-delay: calc(30s / 8 * (8 - 1) * -1);
-  background-image: url("sas1.png");
 }
 
 .item2 {
   animation-delay: calc(30s / 8 * (8 - 2) * -1);
-  background-image: url("sas2.png");
 }
 
 .item3 {
   animation-delay: calc(30s / 8 * (8 - 3) * -1);
-  background-image: url("sas3.png");
 }
 
 .item4 {
   animation-delay: calc(30s / 8 * (8 - 4) * -1);
-  background-image: url("sas1.png");
 }
 
 .item5 {
   animation-delay: calc(30s / 8 * (8 - 5) * -1);
-  background-image: url("sas2.png");
 }
 
 .item6 {
   animation-delay: calc(30s / 8 * (8 - 6) * -1);
-  background-image: url("sas3.png");
 }
 
 .item7 {
   animation-delay: calc(30s / 8 * (8 - 7) * -1);
-  background-image: url("sas1.png");
 }
 
 .item8 {
   animation-delay: calc(30s / 8 * (8 - 8) * -1);
-  background-image: url("sas2.png");
 }
 
 .item9 {
   animation-delay: calc(30s / 8 * (8 - 1) * -1);
-  background-image: url("mdg1.png");
 }
 
 .item10 {
   animation-delay: calc(30s / 8 * (8 - 2) * -1);
-  background-image: url("mdg2.png");
 }
 
 .item11 {
   animation-delay: calc(30s / 8 * (8 - 3) * -1);
-  background-image: url("mdg3.png");
 }
 
 .item12 {
   animation-delay: calc(30s / 8 * (8 - 4) * -1);
-  background-image: url("mdg4.png");
 }
 
 .item13 {
   animation-delay: calc(30s / 8 * (8 - 5) * -1);
-  background-image: url("mdg1.png");
 }
 
 .item14 {
   animation-delay: calc(30s / 8 * (8 - 6) * -1);
-  background-image: url("mdg2.png");
 }
 
 .item15 {
   animation-delay: calc(30s / 8 * (8 - 7) * -1);
-  background-image: url("mdg3.png");
 }
 
 .item16 {
   animation-delay: calc(30s / 8 * (8 - 8) * -1);
-  background-image: url("mdg4.png");
 }
