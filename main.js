@@ -81,11 +81,11 @@ animate(experience, {
 const wrapper = utils.$(".wrapper");
 
 animate(wrapper, {
-  opacity: [0, 0.5],
+  opacity: [0, 0.35],
   easing: "linear",
   autoplay: onScroll({
     target: wrapper,
-    enter: "50vh-=3vw top-=20em",
+    enter: "50vh-=3vw top-=30em",
     leave: "50vh-=9vw bottom",
     sync: syncTime,
     debug: false,

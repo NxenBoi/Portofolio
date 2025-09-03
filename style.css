@@ -33,7 +33,8 @@ section {
 
 .first,
 .second,
-.third .fourth {
+.third,
+.fourth {
   display: none;
 }
 
