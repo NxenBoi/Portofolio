@@ -192,7 +192,7 @@ header {
 }
 
 .wrapper1 {
-  bottom: 18vh;
+  bottom: 0;
 }
 .wrapper2 {
   top: 18vh;
@@ -219,16 +219,20 @@ header {
 }
 
 .itemLeft {
-  left: max(calc(15vw * 8), 100%);
+  left: max(calc(19vw * 8), 100%);
   animation-name: scrollLeft;
 }
 
 .itemRight {
-  right: max(calc(15vw * 8), calc(100% + 15vw));
+  right: max(calc(19vw * 8), calc(100% + 19vw));
   animation-name: scrollRight;
 }
 
 .embed-wrapper {
-  width: 16vw;
-  height: 1px;
+  width: 20vw;
+}
+
+.contributions {
+  z-index: 20;
+  bottom: -150vh;
 }

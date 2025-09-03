@@ -92,13 +92,26 @@ for (let i = 1; i <= 16; i++) {
   }
 }
 const wrapper = utils.$(".wrapper");
+const contributions = utils.$(".contributions");
+
+animate(contributions, {
+  opacity: [0, 1],
+  easing: "linear",
+  autoplay: onScroll({
+    target: contributions,
+    enter: "50vh-=3vw top-=10em",
+    leave: "50vh-=9vw",
+    sync: syncTime,
+    debug: false,
+  }),
+});
 
 animate(wrapper, {
   opacity: [0, 1],
   easing: "linear",
   autoplay: onScroll({
     target: wrapper,
-    enter: "50vh-=3vw top-=30em",
+    enter: "50vh-=3vw top-=50em",
     leave: "50vh-=9vw bottom",
     sync: syncTime,
     debug: false,
