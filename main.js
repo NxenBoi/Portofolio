@@ -4,7 +4,9 @@ const zero = document.querySelector(".zero");
 const first = document.querySelector(".first");
 const second = document.querySelector(".second");
 const third = document.querySelector(".third");
+const fourth = document.querySelector(".fourth");
 
+const stars = utils.$(".bg-animation");
 const logo = utils.$(".logo");
 const learnmore = utils.$(".learnmore");
 
@@ -19,6 +21,18 @@ animate(logo, {
     target: logo,
     enter: "50vh-=4vw",
     leave: "50vh-=9vw",
+    sync: syncTime,
+    debug: false,
+  }),
+});
+
+animate(stars, {
+  opacity: [0.5, 0],
+  easing: "linear",
+  autoplay: onScroll({
+    target: logo,
+    enter: "50vh-=4vw",
+    leave: "50vh-=9vw bottom+=10em",
     sync: syncTime,
     debug: false,
   }),
@@ -40,8 +54,8 @@ const glow = utils.$(".glow");
 const experience = utils.$(".experience");
 
 animate(glow, {
-  filter: ["blur(20px)", "blur(0px)", "blur(0px)", "blur(20px)"],
-  opacity: [0, 1, 1, 0],
+  filter: ["blur(20px)", "blur(0px)"],
+  opacity: [0, 1],
   easing: "linear",
   autoplay: onScroll({
     target: glow,
@@ -53,20 +67,34 @@ animate(glow, {
 });
 
 animate(experience, {
-  opacity: [0, 1, 1, 0],
+  opacity: [0, 1],
   easing: "linear",
   autoplay: onScroll({
     target: experience,
     enter: "50vh-=3vw top-=10em",
-    leave: "50vh-=9vw bottom+=10em",
-    sync: true,
+    leave: "50vh-=9vw bottom",
+    sync: syncTime,
+    debug: false,
+  }),
+});
+
+const wrapper = utils.$(".wrapper");
+
+animate(wrapper, {
+  opacity: [0, 0.5],
+  easing: "linear",
+  autoplay: onScroll({
+    target: wrapper,
+    enter: "50vh-=3vw top-=20em",
+    leave: "50vh-=9vw bottom",
+    sync: syncTime,
     debug: false,
   }),
 });
 
 // Terminal
 
-const time = 0.5;
+const time = 50;
 const Terminal = document.getElementById("Terminal");
 const Input = document.getElementById("Input");
 let UserName = "";
@@ -98,6 +126,7 @@ Input.addEventListener("keydown", (e) => {
             first.style.display = "flex";
             second.style.display = "flex";
             third.style.display = "flex";
+            fourth.style.display = "flex";
           }, time * 10);
         });
       }, time * 10);

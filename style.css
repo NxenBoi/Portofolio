@@ -18,6 +18,7 @@ body::-webkit-scrollbar-button {
 body {
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 section {
@@ -32,7 +33,7 @@ section {
 
 .first,
 .second,
-.third {
+.third .fourth {
   display: none;
 }
 
@@ -62,6 +63,7 @@ h1 {
   user-select: none;
 
   z-index: 2;
+  position: absolute;
 }
 
 p {
@@ -174,4 +176,65 @@ header {
   75% {
     opacity: 0;
   }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.wrapper {
+  width: 100%;
+  position: relative;
+  height: 12vw;
+}
+
+.wrapper1 {
+  bottom: 7vw;
+}
+.wrapper2 {
+  top: 7vw;
+}
+
+@keyframes scrollLeft {
+  to {
+    left: -20vw;
+  }
+}
+
+@keyframes scrollRight {
+  to {
+    right: -20vw;
+  }
+}
+
+.itemRight,
+.itemLeft {
+  width: 20vw;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 6px;
+  filter: blur(4px);
+  position: absolute;
+  animation-duration: 30s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.itemLeft {
+  left: max(calc(19vw * 8), 100%);
+  animation-name: scrollLeft;
+  background-image: url("sas.png");
+}
+
+.itemRight {
+  right: max(calc(19vw * 8), calc(100% + 19vw));
+  animation-name: scrollRight;
+}
+
+.visits {
+  text-shadow: 5px 10px 8px #000000;
 }
