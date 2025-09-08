@@ -77,11 +77,6 @@
       crossorigin="anonymous"
     ></script>
 
-    <section class="zero">
-      <div id="Terminal"></div>
-      <input id="Input" autocomplete="off" name="noautocomplete" autofocus />
-    </section>
-
     <section class="first">
       <div class="bg-animation">
         <div id="stars"></div>
@@ -92,15 +87,21 @@
 
       <img class="logo" src="logo.png" />
 
-      <p class="learnmore">
+      <button class="learnmore" onclick="window.scrollTo(0,window.innerHeight)">
         <i class="fa-solid fa-arrow-down"></i> Learn More
         <i class="fa-solid fa-arrow-down"></i>
-      </p>
+      </button>
     </section>
 
     <section class="second">
-      <div class="glow"></div>
-      <h1 class="experience">full stack scripter<br />years of experience</h1>
+      <h1 id="fss" class="second-section-h1">full stack scripter</h1>
+      <hr id="one" />
+      <hr class="empty" />
+      <h1 id="yoe" class="second-section-h1">5+ years of experience</h1>
+      <hr id="two" />
+      <hr class="empty" />
+      <h1 id="wrs" class="second-section-h1">wide range of skills</h1>
+      <hr id="three" />
     </section>
 
     <section class="third">
@@ -118,6 +119,68 @@
       </div>
     </section>
 
-    <section class="fourth"></section>
+    <section class="fourth">
+      <div
+        id="flex1"
+        class="flex-container"
+        style="
+          border-image: linear-gradient(-25deg, #333333, rgb(0, 0, 0), #464646)
+            1;
+        "
+      >
+        <div class="box" style="width: 25vw; height: 10vw; padding: 20px">
+          <h2>Fluid. Performant. Secure.</h2>
+          <p>
+            I can deliver whatever you want, however you want. My code runs
+            smooth, without any lag, or memory leaks. It's also sanitized and
+            lacks any exploits.
+          </p>
+        </div>
+        <div class="box" style="height: 10vw; aspect-ratio: 16/9; padding: 4px">
+          <video src="Example.mp4" autoplay loop muted playsinline></video>
+        </div>
+      </div>
+
+      <div
+        id="flex2"
+        class="flex-container"
+        style="
+          border-image: linear-gradient(25deg, #333333, rgb(0, 0, 0), #464646) 1;
+        "
+      >
+        <div class="box" style="height: 10vw; aspect-ratio: 16/9; padding: 4px">
+          <video src="Code.mp4" autoplay loop muted playsinline></video>
+        </div>
+        <div class="box" style="width: 25vw; height: 10vw; padding: 20px">
+          <h2>Clean. Modular. Readable.</h2>
+          <p>
+            I always code with scalability in mind. I recognize the imporatance
+            of designing an organized codebase and can assure any other
+            scripters will be satisfied.
+          </p>
+        </div>
+      </div>
+
+      <div
+        id="flex3"
+        class="flex-container"
+        style="
+          border-image: linear-gradient(-25deg, #333333, rgb(0, 0, 0), #464646)
+            1;
+        "
+      >
+        <div class="box" style="width: 25vw; height: 10vw; padding: 20px">
+          <h2>Experienced with tools.</h2>
+          <p>
+            If your codebase is using, or plans to use a tool, (such as a
+            library, plugin, different language, etc.) I will have no issue
+            using and adapting to it.
+          </p>
+        </div>
+        <div class="box" style="height: 10vw; aspect-ratio: 16/9; padding: 4px">
+          <img src="Tools.png" class="boximg" />
+        </div>
+      </div>
+    </section>
   </body>
 </html>

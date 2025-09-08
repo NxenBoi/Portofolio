@@ -1,16 +1,12 @@
 import { animate, utils, onScroll } from "animejs";
 
-const zero = document.querySelector(".zero");
-const first = document.querySelector(".first");
-const second = document.querySelector(".second");
-const third = document.querySelector(".third");
-const fourth = document.querySelector(".fourth");
-
 const stars = utils.$(".bg-animation");
 const logo = utils.$(".logo");
 const learnmore = utils.$(".learnmore");
 
-const syncTime = true;
+window.scrollTo(0, 0);
+
+var syncTime = 0.5;
 
 animate(logo, {
   scale: [1, 1.5],
@@ -50,28 +46,75 @@ animate(learnmore, {
   }),
 });
 
-const glow = utils.$(".glow");
-const experience = utils.$(".experience");
-
-animate(glow, {
-  filter: ["blur(20px)", "blur(0px)"],
+const fss = utils.$("#fss");
+const one = utils.$("#one");
+animate(fss, {
   opacity: [0, 1],
   easing: "linear",
   autoplay: onScroll({
-    target: glow,
-    enter: "50vh-=3vw top-=50em",
+    target: fss,
+    enter: "50vh-=3vw top-=5em",
+    leave: "50vh-=9vw bottom",
+    sync: syncTime,
+    debug: false,
+  }),
+});
+animate(one, {
+  scaleX: [0, 1],
+  easing: "linear",
+  autoplay: onScroll({
+    target: fss,
+    enter: "50vh-=3vw top-=7em",
     leave: "50vh-=9vw bottom",
     sync: syncTime,
     debug: false,
   }),
 });
 
-animate(experience, {
+const yoe = utils.$("#yoe");
+const two = utils.$("#two");
+animate(yoe, {
   opacity: [0, 1],
   easing: "linear",
   autoplay: onScroll({
-    target: experience,
-    enter: "50vh-=3vw top-=10em",
+    target: yoe,
+    enter: "50vh-=3vw top-=5em",
+    leave: "50vh-=9vw bottom",
+    sync: syncTime,
+    debug: false,
+  }),
+});
+animate(two, {
+  scaleX: [0, 1],
+  easing: "linear",
+  autoplay: onScroll({
+    target: yoe,
+    enter: "50vh-=3vw top-=7em",
+    leave: "50vh-=9vw bottom",
+    sync: syncTime,
+    debug: false,
+  }),
+});
+
+const wrs = utils.$("#wrs");
+const three = utils.$("#three");
+animate(wrs, {
+  opacity: [0, 1],
+  easing: "linear",
+  autoplay: onScroll({
+    target: wrs,
+    enter: "50vh-=3vw top-=5em",
+    leave: "50vh-=9vw bottom",
+    sync: syncTime,
+    debug: false,
+  }),
+});
+animate(three, {
+  scaleX: [0, 1],
+  easing: "linear",
+  autoplay: onScroll({
+    target: wrs,
+    enter: "50vh-=3vw top-=7em",
     leave: "50vh-=9vw bottom",
     sync: syncTime,
     debug: false,
@@ -91,6 +134,7 @@ for (let i = 1; i <= 16; i++) {
     game.appendChild(mdg.content.cloneNode(true));
   }
 }
+
 const wrapper = utils.$(".wrapper");
 const contributions = utils.$(".contributions");
 
@@ -99,7 +143,7 @@ animate(contributions, {
   easing: "linear",
   autoplay: onScroll({
     target: contributions,
-    enter: "50vh-=3vw top-=10em",
+    enter: "50vh-=3vw top-=5em",
     leave: "50vh-=9vw",
     sync: syncTime,
     debug: false,
@@ -111,54 +155,51 @@ animate(wrapper, {
   easing: "linear",
   autoplay: onScroll({
     target: wrapper,
-    enter: "50vh-=3vw top-=50em",
+    enter: "50vh-=3vw top-=35em",
     leave: "50vh-=9vw bottom",
     sync: syncTime,
     debug: false,
   }),
 });
 
-// Terminal
-
-const time = 0.5;
-const Terminal = document.getElementById("Terminal");
-const Input = document.getElementById("Input");
-let UserName = "";
-
-function TypeLine(text, callback) {
-  let i = 0;
-  const interval = setInterval(() => {
-    if (i < text.length) {
-      Terminal.textContent += text[i++];
-    } else {
-      clearInterval(interval);
-      Terminal.textContent += "\n";
-      if (callback) callback();
-    }
-  }, time);
-}
-
-Input.addEventListener("keydown", (e) => {
-  if (e.key === "Enter") {
-    UserName = Input.value.trim() || "Guest";
-    Input.style.display = "none";
-    Terminal.textContent = "";
-    TypeLine(`Portfolio.Initialize("${UserName}")`, () => {
-      setTimeout(() => {
-        Terminal.textContent = "";
-        TypeLine("Access Granted", () => {
-          setTimeout(() => {
-            zero.style.display = "none";
-            first.style.display = "flex";
-            second.style.display = "flex";
-            third.style.display = "flex";
-            fourth.style.display = "flex";
-          }, time * 10);
-        });
-      }, time * 10);
-    });
-  }
+const flex1 = utils.$("#flex1");
+animate(flex1, {
+  filter: ["blur(8px)", "blur(0px)"],
+  opacity: [0, 1],
+  easing: "linear",
+  autoplay: onScroll({
+    target: flex1,
+    enter: "50vh-=3vw top-=25em",
+    leave: "50vh-=9vw top-=15em",
+    sync: syncTime,
+    debug: false,
+  }),
 });
 
-Terminal.textContent = "Enter Username: ";
-Input.focus();
+const flex2 = utils.$("#flex2");
+animate(flex2, {
+  filter: ["blur(8px)", "blur(0px)"],
+  opacity: [0, 1],
+  easing: "linear",
+  autoplay: onScroll({
+    target: flex2,
+    enter: "50vh-=3vw top-=25em",
+    leave: "50vh-=9vw top-=15em",
+    sync: syncTime,
+    debug: false,
+  }),
+});
+
+const flex3 = utils.$("#flex3");
+animate(flex3, {
+  filter: ["blur(8px)", "blur(0px)"],
+  opacity: [0, 1],
+  easing: "linear",
+  autoplay: onScroll({
+    target: flex3,
+    enter: "50vh-=3vw top-=25em",
+    leave: "50vh-=9vw top-=15em",
+    sync: syncTime,
+    debug: false,
+  }),
+});
