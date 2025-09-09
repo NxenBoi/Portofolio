@@ -170,7 +170,7 @@ animate(flex1, {
   autoplay: onScroll({
     target: flex1,
     enter: "50vh-=15.68vh top-=25em",
-    leave: "50vh-=18.80vh top-=15em",
+    leave: "50vh-=18.80vh top-=17.5em",
     sync: syncTime,
     debug: false,
   }),
@@ -184,7 +184,7 @@ animate(flex2, {
   autoplay: onScroll({
     target: flex2,
     enter: "50vh-=15.68vh top-=25em",
-    leave: "50vh-=18.80vh top-=15em",
+    leave: "50vh-=18.80vh top-=17.5em",
     sync: syncTime,
     debug: false,
   }),
@@ -198,7 +198,7 @@ animate(flex3, {
   autoplay: onScroll({
     target: flex3,
     enter: "50vh-=15.68vh top-=25em",
-    leave: "50vh-=18.80vh top-=15em",
+    leave: "50vh-=18.80vh top-=17.5em",
     sync: syncTime,
     debug: false,
   }),

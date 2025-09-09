@@ -117,13 +117,13 @@ hr {
 
 @keyframes scrollLeft {
   to {
-    left: -50vw;
+    left: -75vw;
   }
 }
 
 @keyframes scrollRight {
   to {
-    right: -50vw;
+    right: -75vw;
   }
 }
 
@@ -136,18 +136,17 @@ hr {
 }
 
 .itemLeft {
-  left: max(calc(max(15vw, 280px) * 8), 100%);
+  left: max(calc(12vw * 8), 100%);
   animation-name: scrollLeft;
 }
 
 .itemRight {
-  right: max(calc(max(15vw, 280px) * 8), calc(100% + max(15vw, 280px)));
+  right: max(calc(12vw * 8), calc(100% + 12vw));
   animation-name: scrollRight;
 }
 
 .embed-wrapper {
   width: 20vw;
-  min-width: 300px;
 }
 
 .contributions {
@@ -240,5 +239,5 @@ p {
   font-optical-sizing: auto;
   font-weight: 300;
   margin: 0;
-  margin-top: 10px;
+  margin-top: 0.5vw;
 }
