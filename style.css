@@ -37,22 +37,12 @@ html {
   background-color: rgb(0, 0, 0);
 }
 
-.divider {
-  background-color: black;
-  padding: 0;
-  margin: 0;
-  font-size: 3vw;
-  text-align: center;
-  color: white;
-  font-style: italic;
-}
-
 h1 {
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: italic;
-  font-size: 3vw;
+  font-size: 6.25vh;
   background-color: rgba(255, 255, 255, 0);
 
   text-align: center;
@@ -70,7 +60,7 @@ button {
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
   font-weight: 300;
-  font-size: 0.75vw;
+  font-size: 1.75vh;
   background-color: rgba(255, 255, 255, 0);
   border: none;
   color: white;
@@ -83,22 +73,6 @@ button {
 button:hover {
   cursor: pointer;
   opacity: 0.75;
-}
-
-header {
-  margin: 0;
-  padding: 0;
-  height: 0;
-  position: sticky;
-  top: 10px;
-  z-index: 100;
-  font-family: "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  text-align: center;
-  font-size: 0.75vw;
-  background-color: rgba(0, 0, 0, 0);
-  color: rgba(255, 255, 255, 0.192);
 }
 
 .logo {
@@ -162,37 +136,24 @@ hr {
 }
 
 .itemLeft {
-  left: max(calc(15vw * 8), 100%);
+  left: max(calc(max(15vw, 280px) * 8), 100%);
   animation-name: scrollLeft;
 }
 
 .itemRight {
-  right: max(calc(15vw * 8), calc(100% + 15vw));
+  right: max(calc(max(15vw, 280px) * 8), calc(100% + max(15vw, 280px)));
   animation-name: scrollRight;
 }
 
 .embed-wrapper {
   width: 20vw;
+  min-width: 300px;
 }
 
 .contributions {
   z-index: 50;
   position: absolute;
   top: 215vh;
-}
-
-.glass {
-  /* From https://css.glass */
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.801);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  position: absolute;
-  width: 25vw;
-  height: 8vw;
-  z-index: 2;
 }
 
 .glow {
@@ -250,13 +211,13 @@ video {
 .flex-container {
   display: flex;
   flex-direction: row;
-  margin-top: 10px;
+  margin-top: 1vh;
   border: 2px solid transparent;
 }
 
 .box {
   background-color: rgb(0, 0, 0);
-  margin: 2px;
+  margin: 0.4vh;
   display: flex;
   flex-direction: column;
 }
@@ -264,7 +225,7 @@ video {
 h2 {
   position: relative;
   color: white;
-  font-size: 1vw;
+  font-size: 2.089vh;
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
   font-weight: 500;
@@ -274,10 +235,10 @@ h2 {
 p {
   position: relative;
   color: rgba(255, 255, 255, 0.61);
-  font-size: 1vw;
+  font-size: 2.089vh;
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
   font-weight: 300;
   margin: 0;
-  margin-top: 10px;
+  margin-top: 1vh;
 }
