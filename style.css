@@ -211,13 +211,13 @@ video {
 .flex-container {
   display: flex;
   flex-direction: row;
-  margin-top: 1vh;
+  margin-top: 10px;
   border: 2px solid transparent;
 }
 
 .box {
   background-color: rgb(0, 0, 0);
-  margin: 0.4vh;
+  margin: 4px;
   display: flex;
   flex-direction: column;
 }
@@ -225,7 +225,7 @@ video {
 h2 {
   position: relative;
   color: white;
-  font-size: 2.089vh;
+  font-size: 1vw;
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
   font-weight: 500;
@@ -235,10 +235,10 @@ h2 {
 p {
   position: relative;
   color: rgba(255, 255, 255, 0.61);
-  font-size: 2.089vh;
+  font-size: 1vw;
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
   font-weight: 300;
   margin: 0;
-  margin-top: 1vh;
+  margin-top: 10px;
 }
