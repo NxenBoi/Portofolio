@@ -1,4 +1,4 @@
-import { animate, utils, onScroll } from "animejs";
+import { animate, utils, onScroll, stagger } from "animejs";
 
 const stars = utils.$(".bg-animation");
 const logo = utils.$(".logo");
@@ -199,6 +199,63 @@ animate(flex3, {
     target: flex3,
     enter: "50vh-=15.68vh top-=25em",
     leave: "50vh-=18.80vh top-=17.5em",
+    sync: syncTime,
+    debug: false,
+  }),
+});
+
+const fifth = document.getElementById("fifth");
+const gauge = document.getElementById("gauge");
+const gauge_arm = document.getElementById("gauge-arm");
+const time = document.getElementById("time");
+
+for (let i = 0; i < 60; i++) {
+  const Tick = document.createElement("div");
+  Tick.classList.add("tick");
+  if (i % 5 === 0) {
+    Tick.classList.add("long-tick");
+  } else {
+    Tick.classList.add("short-tick");
+  }
+  Tick.style.transform = `rotate(${i * 6}deg)`;
+  gauge.appendChild(Tick);
+}
+
+animate(".tick", {
+  filter: ["blur(8px)", "blur(2px)"],
+  opacity: [0, 0.5],
+  easing: "linear",
+  autoplay: onScroll({
+    target: fifth,
+    enter: "50vh-=15.68vh top-=50vh",
+    leave: "50vh-=18.80vh bottom-=70vh",
+    sync: syncTime,
+    debug: false,
+  }),
+});
+
+animate(gauge_arm, {
+  rotate: [0, 360 * 3],
+  filter: ["blur(8px)", "blur(2px)"],
+  opacity: [0, 0.5],
+  easing: "linear",
+  autoplay: onScroll({
+    target: fifth,
+    enter: "50vh-=15.68vh top-=20vh",
+    leave: "50vh-=18.80vh bottom-=70vh",
+    sync: syncTime / 5,
+    debug: false,
+  }),
+});
+
+animate(time, {
+  filter: ["blur(8px)", "blur(0px)"],
+  opacity: [0, 1],
+  easing: "linear",
+  autoplay: onScroll({
+    target: fifth,
+    enter: "50vh-=15.68vh top-=50vh",
+    leave: "50vh-=18.80vh bottom-=70vh",
     sync: syncTime,
     debug: false,
   }),

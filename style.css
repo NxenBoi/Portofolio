@@ -241,3 +241,30 @@ p {
   margin: 0;
   margin-top: 0.5vw;
 }
+
+.tick {
+  position: absolute;
+  width: 3px;
+  background: rgb(216, 216, 216);
+  top: 425vh;
+  left: 50%;
+  transform-origin: center 250px;
+}
+
+.long-tick {
+  height: 20px;
+}
+
+.short-tick {
+  height: 10px;
+}
+
+#gauge-arm {
+  position: absolute;
+  background: rgb(216, 216, 216);
+  top: 430.6vh;
+  width: 3px;
+  height: 200px;
+  transform-origin: center 200px;
+  rotate: 0deg;
+}
