@@ -246,9 +246,9 @@ p {
   position: absolute;
   width: 3px;
   background: rgb(216, 216, 216);
-  top: 425vh;
   left: 50%;
-  transform-origin: center 250px;
+  top: 20vh;
+  transform-origin: center 30vh;
 }
 
 .long-tick {
@@ -259,12 +259,17 @@ p {
   height: 10px;
 }
 
+#fifth {
+  position: relative;
+  background-color: rgb(0, 0, 0);
+}
+
 #gauge-arm {
   position: absolute;
   background: rgb(216, 216, 216);
-  top: 430.6vh;
   width: 3px;
-  height: 200px;
-  transform-origin: center 200px;
+  height: 25vh;
+  top: calc(50% - 25vh);
+  transform-origin: center 25vh;
   rotate: 0deg;
 }

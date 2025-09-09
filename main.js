@@ -235,7 +235,7 @@ animate(".tick", {
 });
 
 animate(gauge_arm, {
-  rotate: [0, 360 * 3],
+  rotate: [0, 360],
   filter: ["blur(8px)", "blur(2px)"],
   opacity: [0, 0.5],
   easing: "linear",
