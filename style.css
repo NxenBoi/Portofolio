@@ -29,6 +29,12 @@ section {
   justify-content: center;
   align-items: center;
   background-color: black;
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+html {
+  background-color: rgb(255, 255, 255);
 }
 
 .divider {
@@ -137,13 +143,13 @@ hr {
 
 @keyframes scrollLeft {
   to {
-    left: -20vw;
+    left: -50vw;
   }
 }
 
 @keyframes scrollRight {
   to {
-    right: -20vw;
+    right: -50vw;
   }
 }
 
@@ -156,12 +162,12 @@ hr {
 }
 
 .itemLeft {
-  left: max(calc(19vw * 8), 100%);
+  left: max(calc(15vw * 8), 100%);
   animation-name: scrollLeft;
 }
 
 .itemRight {
-  right: max(calc(19vw * 8), calc(100% + 19vw));
+  right: max(calc(15vw * 8), calc(100% + 15vw));
   animation-name: scrollRight;
 }
 
